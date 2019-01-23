@@ -19,13 +19,17 @@ class App extends React.Component<any, any> {
 
     };
 
-	public render() {
+    renderContent() {
         if (this.state.errMsg && !this.state.lat) {
             return <div>Error: {this.state.errMsg} </div>
         } else if (!this.state.errMsg && this.state.lat) {
             return <SeasonDisplay lat={this.state.lat}/>
         }
-        return <Spinner />;
+        return <Spinner message="Please accept location request"/>;
+    };
+
+	public render() {
+       return <div>{ this.renderContent()}</div>
     };
 };
 
