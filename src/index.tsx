@@ -1,27 +1,31 @@
+import './SeasonDisplay.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import SeasonDisplay from './SeasonDisplay';
+import Spinner from './Spinner';
 
 class App extends React.Component<any, any> {
-	constructor(props:any) {
-        super(props);
+    state = { lat: null, errMsg: '' };
 
-        this.state = { lat: null, errMsg: '' };
-
+    componentDidMount() {
         window.navigator.geolocation.getCurrentPosition(
             position => this.setState({ lat: position.coords.latitude}),
             err => this.setState({ errMsg: err.message})
         );
     };
 
-	public render() {
+    componentDidUpdate() {
+        console.log('Component updated');
 
-        return (
-            <div>
-                Latitude: {this.state.lat}
-                <br />
-                Error: {this.state.errMsg}
-            </div>
-        );
+    };
+
+	public render() {
+        if (this.state.errMsg && !this.state.lat) {
+            return <div>Error: {this.state.errMsg} </div>
+        } else if (!this.state.errMsg && this.state.lat) {
+            return <SeasonDisplay lat={this.state.lat}/>
+        }
+        return <Spinner />;
     };
 };
 
