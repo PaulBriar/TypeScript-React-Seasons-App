@@ -16,7 +16,6 @@ class App extends React.Component<any, any> {
 
     componentDidUpdate() {
         console.log('Component updated');
-
     };
 
     renderContent() {
@@ -29,7 +28,7 @@ class App extends React.Component<any, any> {
     };
 
 	public render() {
-       return <div>{ this.renderContent()}</div>
+       return <div>{ this.renderContent() }</div>
     };
 };
 

@@ -1,4 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#TypeScript/React Seasons App
+Silly React app that uses the Geolocation API to display either a winter greeting or a summer greeting.
 
 ## Available Scripts
 
